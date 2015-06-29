@@ -171,6 +171,8 @@ $(document).ready(function(){
 
   $(document).on("click", "snColor", function(evt) {
     toggleSnakeColor();
+    //aggiungere anche rainbow snake
+    //modalità 32bit e modalità colori fighi
   })
 
   $(document).on("click", "foodColor", function(evt) {
