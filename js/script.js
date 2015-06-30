@@ -1,3 +1,11 @@
+//TO-DO:
+// Aggiunta pulsanti freccette in alto a dx
+// Modalità 3330
+// Modalità inverti direzione
+// Messa in pausa
+// Record
+// Lampeggio quando perdi
+
 $(document).ready(function(){
 	//Canvas stuff
 	// $("#canvas").width($(window).width());
@@ -66,7 +74,7 @@ $(document).ready(function(){
 		//To avoid the snake trail we need to paint the BG on every frame
 		//Lets paint the canvas now
 		//ctx.fillStyle = "white";
-		ctx.fillStyle ="#4B6635";
+		ctx.fillStyle ="#5B7745";
 		ctx.fillRect(0, 0, w, h);
 	  ctx.strokeStyle = "black";
 		ctx.strokeRect(0, 0, w, h);
@@ -139,7 +147,7 @@ $(document).ready(function(){
 	//Lets first create a generic function to paint cells
 	function paint_cell(x, y)
 	{
-		ctx.strokeStyle ="#4B6635";
+		ctx.strokeStyle ="#5B7745";
 		ctx.strokeRect(x*cw, y*cw, cw, cw);
 		ctx.fillStyle = snakeColor;
 		ctx.fillRect(x*cw, y*cw, cw, cw);
@@ -149,7 +157,7 @@ $(document).ready(function(){
 
 	function paint_cell_food(x, y)
 	{
-		ctx.strokeStyle ="#4B6635";
+		ctx.strokeStyle ="#5B7745";
 		ctx.strokeRect(x*cw, y*cw, cw, cw);
 		ctx.fillStyle = foodColor;
 		ctx.fillRect(x*cw, y*cw, cw, cw);
@@ -180,8 +188,18 @@ $(document).ready(function(){
 		//The snake is now keyboard controllable
 	})
 
-  //$("#canvas").css("width","100%");
-  //$("#canvas").css("height","100%");
+	$(document).on("click", "#u", function(evt) {
+    if (d != "down") d = "up";
+  });
+	$(document).on("click", "#d", function(evt) {
+    if (d != "up") d = "down";
+  });
+	$(document).on("click", "#r", function(evt) {
+    if (d != "left") d = "right";
+  });
+	$(document).on("click", "#l", function(evt) {
+    if (d != "right") d = "left";
+  });
 
   function toggleSnakeColor() {
     //cambia il colore del serpente
@@ -238,21 +256,21 @@ $(document).ready(function(){
     toggleSnakeColor();
     //aggiungere anche rainbow snake
     //modalità 32bit e modalità colori fighi
-  })
+  });
 
   $(document).on("click", "#foodColor", function(evt) {
     toggleFoodColor();
-  })
+  });
 
   $(document).on("click", "#3330", function(evt) {
     toggle3330Mode();
-  })
+  });
 
 	$(document).on("change", "#speed", function(evt) {
 		//elimina il focus dallo slider
 		$("#snColor").focus();
 		if(typeof game_loop != "undefined") clearInterval(game_loop);
 		game_loop = setInterval(paint, 100 - $("#speed").val());
-  })
+  });
 
-})
+});

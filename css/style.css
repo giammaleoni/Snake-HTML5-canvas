@@ -1,51 +1,61 @@
-/*html {
-  height: 100%;
-  width: 100%;
-}
-
-body{
-  height: 100%;
-  width: 100%;
-  margin: 0px;
-}*/
-
-canvas{
-  /*width: 100%;*/
-}
-
-/*.settings{
-  display: inline-block;
-}*/
-
 #page1{
-  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Nokia_3310_blue_R7309170_wp.png/220px-Nokia_3310_blue_R7309170_wp.png);
+  background: url(../res/3310.png) white;
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center;
+  background-position: 50% 50%;
 }
 
-.canvas {
+.settings{
+  position: absolute;
+  bottom: -200px;
+  display: none;
+}
+
+.screen {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 140px;
+  width: 177px;
+  height: 126px;
+  background-color: #5B7745;
+  border-radius: 8px;
+  box-shadow: -2px -2px 1px #423333;
+}
+
+.canvas{
+  position: relative;
   text-align: center;
+  padding: 3px;
+}
+
+.controlli{
+  width: 200px;
+  margin: 120px auto auto auto;
 }
 
 .controlli button{
   margin: 5px;
   padding: 0px;
-  width: 30px;
+  width: 50px;
   height: 30px;
   position: relative;
-  top: 300px; /*da rivedere*/
+  border-radius: 15px !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
 }
 
 .controlli button#u{
-
-}
-.controlli button#d{
-
-}
-.controlli button#r{
-
+  margin: auto;
 }
 .controlli button#l{
 
+}
+.controlli button#r{
+  position: relative;
+  top: -35px;
+  left: 145px;
+}
+.controlli button#d{
+  margin: auto;
+  top: -20px;
 }

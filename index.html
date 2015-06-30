@@ -27,7 +27,7 @@
     <div data-role="content" role="main">
 
       <!-- <fieldset class="ui-grid-b"> -->
-        <div class="ui-block-a">
+        <div class="settings">
           <button type="button" name="button" id="snColor">Toggle snake color</button>
           <button type="button" name="button" id="foodColor">Toggle food color</button>
           <button type="button" name="button" id="3330">Toggle 3330 Mode</button>
@@ -35,21 +35,22 @@
             <input type="range" name="slider" value="0" min="0" max="100" data-highlight="true" id="speed"/>
           </div>
         </div>
-        <div class="ui-block-b canvas">
-          <canvas id="canvas"></canvas>
+        <div class="screen">
+          <div class="canvas">
+              <canvas id="canvas"   width="170px" height="120px"></canvas>
+          </div>
         </div>
-        <div class="ui-block-c">
-        </div>
+        <!-- <div class="ui-block-c">
+        </div> -->
       <!-- </fieldset> -->
 
 
-      <div class="ui-block-d controlli">
+      <div class="controlli">
         <button type="button" name="u" id="u"></button>
-        <button type="button" name="d" id="d"></button>
-        <button type="button" name="r" id="r"></button>
         <button type="button" name="l" id="l"></button>
+        <button type="button" name="r" id="r"></button>
+        <button type="button" name="d" id="d"></button>
       </div>
-
     </div>
   </div>
 </div>
