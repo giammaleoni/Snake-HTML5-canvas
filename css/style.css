@@ -1,4 +1,5 @@
-#page1{
+#pageContent{
+  padding: 0px;
   background: url(../res/3310.png) white;
   background-repeat: no-repeat;
   background-size: contain;
@@ -14,9 +15,9 @@
 .screen {
   margin-left: auto;
   margin-right: auto;
-  margin-top: 140px;
-  width: 177px;
-  height: 126px;
+  margin-top: 158px;
+  width: 187px;
+  height: 128px;
   background-color: #5B7745;
   border-radius: 8px;
   box-shadow: -2px -2px 1px #423333;
@@ -26,6 +27,10 @@
   position: relative;
   text-align: center;
   padding: 3px;
+}
+
+#canvas{
+  /*width: 100%;*/
 }
 
 .controlli{
@@ -58,4 +63,10 @@
 .controlli button#d{
   margin: auto;
   top: -20px;
+}
+
+.ui-icon-pause
+{
+    background: url('../res/pause.png') no-repeat rgba(0, 0, 0, 0.4) !important;
+    background-size: 16px 16px;
 }

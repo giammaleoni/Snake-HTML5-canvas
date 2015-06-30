@@ -23,8 +23,19 @@
 </head>
 
 <body>
+
   <div data-role="page" id="page1">
-    <div data-role="content" role="main">
+
+    <div data-role="panel" id="panel" data-position="right" data-theme="a" data-display="push"></div>
+
+    <div data-role="header">
+      <a data-iconpos="notext" data-role="button" title="Pause" class="ui-icon-pause">Home</a>
+      <h1>Nokia's Snake</h1>
+      <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
+    </div>
+
+
+    <div data-role="content" role="main" id="pageContent">
 
       <!-- <fieldset class="ui-grid-b"> -->
         <div class="settings">
@@ -37,7 +48,7 @@
         </div>
         <div class="screen">
           <div class="canvas">
-              <canvas id="canvas"   width="170px" height="120px"></canvas>
+              <canvas id="canvas"   width="180px" height="120px"></canvas>
           </div>
         </div>
         <!-- <div class="ui-block-c">
