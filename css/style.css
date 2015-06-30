@@ -1,12 +1,40 @@
-#pageContent{
-  padding: 0px;
-  background: url(../res/3310.png) white;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: 50% 50%;
+html, body {
+  overflow: hidden;
 }
 
-.settings{
+.ui-header{
+  z-index: 1000 !important;
+}
+
+#speed{
+  background-color: white !important;
+}
+
+#pageContent .is3310 {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: white url(../res/3310.png) no-repeat 50% 80% fixed;
+  top: 0px;
+  right: 0px;
+  position: absolute;
+  display: inline-block;
+  background-size: 255px;
+}
+
+#pageContent .is3330 {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: white url(../res/3330.png) no-repeat 50% 80% fixed;
+  top: 0px;
+  right: 0px;
+  position: absolute;
+  display: inline-block;
+  background-size: 255px;
+}
+
+.settings {
   position: absolute;
   bottom: -200px;
   display: none;
@@ -15,8 +43,8 @@
 .screen {
   margin-left: auto;
   margin-right: auto;
-  margin-top: 158px;
-  width: 187px;
+  margin-top: 160px;
+  width: 170px;
   height: 128px;
   background-color: #5B7745;
   border-radius: 8px;
@@ -26,16 +54,24 @@
 .canvas{
   position: relative;
   text-align: center;
-  padding: 3px;
+  padding-top: 5px;
+  height: 120px;
+  background-color: #5B7745;
+  border-radius: 8px;
+  box-shadow: -2px -2px 1px #423333;
 }
 
 #canvas{
   /*width: 100%;*/
 }
 
+#panel{
+  background-color: #2c3e50;
+}
+
 .controlli{
   width: 200px;
-  margin: 120px auto auto auto;
+  margin: 117px auto auto auto;
 }
 
 .controlli button{
@@ -65,8 +101,10 @@
   top: -20px;
 }
 
-.ui-icon-pause
-{
+.ui-icon-pause{
     background: url('../res/pause.png') no-repeat rgba(0, 0, 0, 0.4) !important;
     background-size: 16px 16px;
 }
+
+
+#panel div.ui-slider-switch { width: 100% }

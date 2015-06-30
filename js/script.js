@@ -60,10 +60,24 @@ $(document).ready(function(){
 	//Lets create the food now
 	function create_food()
 	{
-		food = {
-			x: Math.round(Math.random()*(w-cw)/cw),
-			y: Math.round(Math.random()*(h-cw)/cw),
-		};
+		if ($("#flip-1").val()=="on") {
+			//il cibo non deve fare parte dello snake
+			do {
+				food = {
+					x: Math.round(Math.random()*(w-cw)/cw),
+					y: Math.round(Math.random()*(h-cw)/cw),
+				};
+			} while (check_collision(food.x, food.y, snake_array));
+		}else{
+			//il cibo non deve fare parte dello snake
+			do {
+				food = {
+					x: Math.round(Math.random()*(w-cw)/cw),
+					y: Math.round(Math.random()*(h-cw)/cw),
+				};
+			} while (!check_collision(food.x, food.y, snake_array));
+		}
+
 		//This will create a cell with x/y between 0-44
 		//Because there are 45(450/10) positions accross the rows and columns
 	}
@@ -114,6 +128,7 @@ $(document).ready(function(){
 			score++;
 
 			//incrementa il livello
+			//ogni 3 cibi sale di 1
 			if (score%3 == 0) {
 				$("#speed").val(parseInt($("#speed").val())+1);
 			}
@@ -185,6 +200,7 @@ $(document).ready(function(){
 		else if(key == "38" && d != "down") d = "up";
 		else if(key == "39" && d != "left") d = "right";
 		else if(key == "40" && d != "up") d = "down";
+		else if (key == "80") $( "#panel" ).panel( "toggle" );
 		//The snake is now keyboard controllable
 	})
 
@@ -249,6 +265,15 @@ $(document).ready(function(){
 
   function toggle3330Mode() {
     //cambia la modalità (pareti attravresabili)
+		if ($("#3330").val() == "on") {
+			//allora è 3310
+			$("#background").removeClass("is3330");
+			$("#background").addClass("is3310");
+		} else {
+			//allora è 3330
+			$("#background").removeClass("is3310");
+			$("#background").addClass("is3330");
+		}
   }
 
 
@@ -262,15 +287,39 @@ $(document).ready(function(){
     toggleFoodColor();
   });
 
-  $(document).on("click", "#3330", function(evt) {
+  $(document).on("change", "#3330", function(evt) {
     toggle3330Mode();
   });
 
 	$(document).on("change", "#speed", function(evt) {
 		//elimina il focus dallo slider
 		$("#snColor").focus();
-		if(typeof game_loop != "undefined") clearInterval(game_loop);
-		game_loop = setInterval(paint, 100 - $("#speed").val());
+		// if(typeof game_loop != "undefined") clearInterval(game_loop);
+		// game_loop = setInterval(paint, 100 - $("#speed").val());
   });
+
+	//quando apro il pannello metto il gioco in pausa
+	$( "#panel" ).panel({
+	  beforeopen: function( event, ui ) {
+			if(typeof game_loop != "undefined") clearInterval(game_loop);
+		}
+	});
+
+	//quando chiudo il panello riprendo il gioco
+	$( "#panel" ).panel({
+	  beforeclose: function( event, ui ) {
+			$(".canvas").addClass("blink");
+			setTimeout(function(){$("#canvas").fadeOut()},500);
+			setTimeout(function(){$("#canvas").fadeIn()},1000);
+			setTimeout(function(){$("#canvas").fadeOut()},1500);
+			setTimeout(function(){$("#canvas").fadeIn()},2000);
+			setTimeout(function(){$("#canvas").fadeOut()},2500);
+			setTimeout(function(){
+				$("#canvas").fadeIn();
+				game_loop = setInterval(paint, 100 - $("#speed").val());
+				$(".canvas").removeClass("blink");
+			},3000);
+		}
+	});
 
 });

@@ -25,35 +25,44 @@
 <body>
 
   <div data-role="page" id="page1">
+    <div data-role="panel" id="panel" data-position="left" data-theme="a" data-display="push" data-swipe-close="false">
 
-    <div data-role="panel" id="panel" data-position="right" data-theme="a" data-display="push"></div>
+        <div data-role="fieldcontain">
+          <button type="button" data-theme="b" name="button" id="snColor">Toggle snake color</button>
+          <button type="button" data-theme="b" name="button" id="foodColor">Toggle food color</button>
+        </div>
+
+        <div data-role="fieldcontain">
+          <label for="slider">Level</label>
+          <input type="range" data-theme="b" name="slider" value="0" min="0" max="100" data-highlight="true" id="speed"/>
+        </div>
+        <div data-role="fieldcontain">
+        <select name="3330" id="3330" data-theme="b" data-role="slider" class="ui-slider-switch ui-btn-down-c ui-btn-corner-all">
+          <option value="off">3330</option>
+          <option value="on" selected>3310</option>
+        </select>
+        </div>
+        <div data-role="fieldcontain">
+        <select name="flip-1" id="flip-1" data-theme="b" data-role="slider" class="ui-slider-switch">
+          <option value="off">Eat your poop</option>
+          <option value="on" selected>Healthy food</option>
+        </select>
+        </div>
+    </div>
 
     <div data-role="header">
-      <a data-iconpos="notext" data-role="button" title="Pause" class="ui-icon-pause">Home</a>
-      <h1>Nokia's Snake</h1>
       <a data-iconpos="notext" href="#panel" data-role="button" data-icon="flat-menu"></a>
+      <h1>Nokia's Snake</h1>
     </div>
 
 
     <div data-role="content" role="main" id="pageContent">
-
-      <!-- <fieldset class="ui-grid-b"> -->
-        <div class="settings">
-          <button type="button" name="button" id="snColor">Toggle snake color</button>
-          <button type="button" name="button" id="foodColor">Toggle food color</button>
-          <button type="button" name="button" id="3330">Toggle 3330 Mode</button>
-          <div data-role="fieldcontain">
-            <input type="range" name="slider" value="0" min="0" max="100" data-highlight="true" id="speed"/>
-          </div>
-        </div>
+      <div id="background" class="is3310" ></div>
         <div class="screen">
           <div class="canvas">
-              <canvas id="canvas"   width="180px" height="120px"></canvas>
+              <canvas id="canvas"   width="160px" height="110px"></canvas>
           </div>
         </div>
-        <!-- <div class="ui-block-c">
-        </div> -->
-      <!-- </fieldset> -->
 
 
       <div class="controlli">
@@ -62,6 +71,7 @@
         <button type="button" name="r" id="r"></button>
         <button type="button" name="d" id="d"></button>
       </div>
+
     </div>
   </div>
 </div>
