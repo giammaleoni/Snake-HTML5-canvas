@@ -1,5 +1,7 @@
 $(document).ready(function(){
 	//Canvas stuff
+	// $("#canvas").width($(window).width());
+  // $("#canvas").height($(window).width());
 	var canvas = $("#canvas")[0];
 	var ctx = canvas.getContext("2d");
 	var w = $("#canvas").width();
@@ -11,6 +13,11 @@ $(document).ready(function(){
 	var d;
 	var food;
 	var score;
+
+	var snakeColor = "black",
+			snakeColorCounter = 0;
+	var foodColor = "black",
+			foodColorCounter = 0;
 
 	//Lets create the snake now
 	var snake_array; //an array of cells to make up the snake
@@ -26,7 +33,8 @@ $(document).ready(function(){
 		//Lets move the snake now using a timer which will trigger the paint function
 		//every 100ms
 		if(typeof game_loop != "undefined") clearInterval(game_loop);
-		game_loop = setInterval(paint, 100);
+		game_loop = setInterval(paint, 100 - $("#speed").val());
+
 	}
 	init();
 
@@ -57,7 +65,8 @@ $(document).ready(function(){
 	{
 		//To avoid the snake trail we need to paint the BG on every frame
 		//Lets paint the canvas now
-		ctx.fillStyle = "white";
+		//ctx.fillStyle = "white";
+		ctx.fillStyle ="#4B6635";
 		ctx.fillRect(0, 0, w, h);
 	  ctx.strokeStyle = "black";
 		ctx.strokeRect(0, 0, w, h);
@@ -95,6 +104,12 @@ $(document).ready(function(){
 		{
 			var tail = {x: nx, y: ny};
 			score++;
+
+			//incrementa il livello
+			if (score%3 == 0) {
+				$("#speed").val(parseInt($("#speed").val())+1);
+			}
+
 			//Create new food
 			create_food();
 		}
@@ -115,7 +130,7 @@ $(document).ready(function(){
 		}
 
 		//Lets paint the food
-		paint_cell(food.x, food.y);
+		paint_cell_food(food.x, food.y);
 		//Lets paint the score
 		var score_text = "Score: " + score;
 		ctx.fillText(score_text, 5, h-5);
@@ -124,10 +139,22 @@ $(document).ready(function(){
 	//Lets first create a generic function to paint cells
 	function paint_cell(x, y)
 	{
-		ctx.fillStyle = "blue";
-		ctx.fillRect(x*cw, y*cw, cw, cw);
-		ctx.strokeStyle = "white";
+		ctx.strokeStyle ="#4B6635";
 		ctx.strokeRect(x*cw, y*cw, cw, cw);
+		ctx.fillStyle = snakeColor;
+		ctx.fillRect(x*cw, y*cw, cw, cw);
+		//ctx.strokeStyle = "white";
+
+	}
+
+	function paint_cell_food(x, y)
+	{
+		ctx.strokeStyle ="#4B6635";
+		ctx.strokeRect(x*cw, y*cw, cw, cw);
+		ctx.fillStyle = foodColor;
+		ctx.fillRect(x*cw, y*cw, cw, cw);
+		//ctx.strokeStyle = "white";
+
 	}
 
 	function check_collision(x, y, array)
@@ -156,30 +183,76 @@ $(document).ready(function(){
   //$("#canvas").css("width","100%");
   //$("#canvas").css("height","100%");
 
-  function togglSnakeColor() {
+  function toggleSnakeColor() {
     //cambia il colore del serpente
+		if (snakeColorCounter == 2) {
+			snakeColorCounter = 0;
+		} else {
+			snakeColorCounter++;
+		}
+
+		switch (snakeColorCounter) {
+			case 0:
+				snakeColor = "black"
+				break;
+			case 1:
+				snakeColor = "red"
+				break;
+			case 2:
+				snakeColor = "blue"
+				break;
+			default:
+
+		}
   }
 
-  function togglFoodColor() {
+  function toggleFoodColor() {
     //cambia il colore del cibo
+		if (foodColorCounter == 2) {
+			foodColorCounter = 0;
+		} else {
+			foodColorCounter++;
+		}
+
+		switch (foodColorCounter) {
+			case 0:
+				foodColor = "black"
+				break;
+			case 1:
+				foodColor = "red"
+				break;
+			case 2:
+				foodColor = "blue"
+				break;
+			default:
+
+		}
   }
 
-  function toggl3330Mode() {
+  function toggle3330Mode() {
     //cambia la modalità (pareti attravresabili)
   }
 
 
-  $(document).on("click", "snColor", function(evt) {
+  $(document).on("click", "#snColor", function(evt) {
     toggleSnakeColor();
     //aggiungere anche rainbow snake
     //modalità 32bit e modalità colori fighi
   })
 
-  $(document).on("click", "foodColor", function(evt) {
+  $(document).on("click", "#foodColor", function(evt) {
     toggleFoodColor();
   })
 
-  $(document).on("click", "3330", function(evt) {
+  $(document).on("click", "#3330", function(evt) {
     toggle3330Mode();
   })
+
+	$(document).on("change", "#speed", function(evt) {
+		//elimina il focus dallo slider
+		$("#snColor").focus();
+		if(typeof game_loop != "undefined") clearInterval(game_loop);
+		game_loop = setInterval(paint, 100 - $("#speed").val());
+  })
+
 })

@@ -1,0 +1,51 @@
+/*html {
+  height: 100%;
+  width: 100%;
+}
+
+body{
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+}*/
+
+canvas{
+  /*width: 100%;*/
+}
+
+/*.settings{
+  display: inline-block;
+}*/
+
+#page1{
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Nokia_3310_blue_R7309170_wp.png/220px-Nokia_3310_blue_R7309170_wp.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.canvas {
+  text-align: center;
+}
+
+.controlli button{
+  margin: 5px;
+  padding: 0px;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  top: 300px; /*da rivedere*/
+}
+
+.controlli button#u{
+
+}
+.controlli button#d{
+
+}
+.controlli button#r{
+
+}
+.controlli button#l{
+
+}
