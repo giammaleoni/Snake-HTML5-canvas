@@ -267,12 +267,12 @@ $(document).ready(function(){
     //cambia la modalità (pareti attravresabili)
 		if ($("#3330").val() == "on") {
 			//allora è 3310
-			$("#background").removeClass("is3330");
-			$("#background").addClass("is3310");
+			$("#pageContent").removeClass("is3330");
+			$("#pageContent").addClass("is3310");
 		} else {
 			//allora è 3330
-			$("#background").removeClass("is3310");
-			$("#background").addClass("is3330");
+			$("#pageContent").removeClass("is3310");
+			$("#pageContent").addClass("is3330");
 		}
   }
 
