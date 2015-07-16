@@ -34,7 +34,7 @@
 
         <div data-role="fieldcontain">
           <label for="slider">Level</label>
-          <input type="range" data-theme="b" name="slider" value="0" min="0" max="100" data-highlight="true" id="speed"/>
+          <input type="range" data-theme="b" name="slider" value="0" min="0" max="100" data-highlight="true" data-disabled="true" id="speed"/>
         </div>
         <div data-role="fieldcontain">
         <select name="3330" id="3330" data-theme="b" data-role="slider" class="ui-slider-switch ui-btn-down-c ui-btn-corner-all">
@@ -60,16 +60,66 @@
       <!-- <div id="background" class="is3310" ></div> -->
         <div class="screen">
           <div class="canvas">
-              <canvas id="canvas"   width="160px" height="110px"></canvas>
+              <canvas id="canvas">   <!--width="160px" height="110px">--></canvas>
           </div>
         <!-- </div> -->
 
 
       <div class="controlli">
-        <button type="button" name="u" id="u"></button>
+        <!-- <button type="button" name="u" id="u"></button>
         <button type="button" name="l" id="l"></button>
         <button type="button" name="r" id="r"></button>
-        <button type="button" name="d" id="d"></button>
+        <button type="button" name="d" id="d"></button> -->
+        <table>
+          <!-- 1,2,3 -->
+          <tr>
+            <td>
+              <button type="button" name="button"></button>
+            </td>
+            <td>
+              <button type="button" name="u" id="u"></button>
+            </td>
+            <td>
+              <button type="button" name="button"></button>
+            </td>
+          </tr>
+          <!-- 4,5,6 -->
+          <tr>
+            <td>
+              <button type="button" name="l" id="l"></button>
+            </td>
+            <td>
+              <button type="button" name="button"></button>
+            </td>
+            <td>
+              <button type="button" name="r" id="r"></button>
+            </td>
+          </tr>
+          <!-- 7,8,9 -->
+          <tr>
+            <td>
+              <button type="button" name="button"></button>
+            </td>
+            <td>
+              <button type="button" name="d" id="d"></button>
+            </td>
+            <td>
+              <button type="button" name="button"></button>
+            </td>
+          </tr>
+          <!-- *,0,# -->
+          <tr>
+            <td>
+              <button type="button" name="button"></button>
+            </td>
+            <td>
+              <button type="button" name="button"></button>
+            </td>
+            <td>
+              <button type="button" name="button"></button>
+            </td>
+          </tr>
+        </table>
       </div>
 
     </div>

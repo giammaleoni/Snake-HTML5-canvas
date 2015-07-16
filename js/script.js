@@ -8,13 +8,12 @@
 
 $(document).ready(function(){
 	//Canvas stuff
-	// $("#canvas").width($(window).width());
-  // $("#canvas").height($(window).width());
 	var canvas = $("#canvas")[0];
 	var ctx = canvas.getContext("2d");
-	var w = $("#canvas").width();
+	//var w = $("#canvas").width();
 	//var h = $("#canvas").height();
-  var h = $("#canvas").height();
+	var w = 300;
+	var h = 150;
 
 	//Lets save the cell width in a variable for easy control
 	var cw = 10;
@@ -37,6 +36,9 @@ $(document).ready(function(){
 		create_food(); //Now we can see the food particle
 		//finally lets display the score
 		score = 0;
+
+		//restart each time from level 0
+		$("#speed").val(0);
 
 		//Lets move the snake now using a timer which will trigger the paint function
 		//every 100ms
@@ -112,6 +114,9 @@ $(document).ready(function(){
 		//Now if the head of the snake bumps into its body, the game will restart
 		if(nx == -1 || nx == w/cw || ny == -1 || ny == h/cw || check_collision(nx, ny, snake_array))
 		{
+			//controllo dello score con Record
+			checkNewRecord(score);
+
 			//restart game
 			init();
 			//Lets organize the code a bit now.
@@ -204,16 +209,16 @@ $(document).ready(function(){
 		//The snake is now keyboard controllable
 	})
 
-	$(document).on("click", "#u", function(evt) {
+	$(document).on("touchstart", "#u", function(evt) {
     if (d != "down") d = "up";
   });
-	$(document).on("click", "#d", function(evt) {
+	$(document).on("touchstart", "#d", function(evt) {
     if (d != "up") d = "down";
   });
-	$(document).on("click", "#r", function(evt) {
+	$(document).on("touchstart", "#r", function(evt) {
     if (d != "left") d = "right";
   });
-	$(document).on("click", "#l", function(evt) {
+	$(document).on("touchstart", "#l", function(evt) {
     if (d != "right") d = "left";
   });
 
@@ -276,6 +281,37 @@ $(document).ready(function(){
 		}
   }
 
+	function checkNewRecord(punteggio) {
+		//se il local storage è vuoto creo il mio array iniziale di punteggi (cambiare [])
+		topScores = localStorage.topScores ? JSON.parse(localStorage.topScores) : [
+				{score: 1000, name:  "Paperino"},
+				{score: 500, name:  "Zio Paperone"},
+				{score: 300, name:  "Gastone"},
+				{score: 100, name:  "Tololino"},
+				{score: 50, name:  "Qui"},
+				{score: 30, name:  "Quo"},
+				{score: 10, name:  "Qua"},
+				{score: 5, name:  "Clarabella"},
+				{score: 3, name:  "Topolino"},
+				{score: 1, name:  "Gambadilegno"},
+			];
+
+		for (var i = 0; i < topScores.length; i++) {
+			//se punteggio maggiore rispetto ad uno nella lista
+			if (punteggio > topScores[i].score){
+				//pop up con inserisci il nome
+				var newPunteggio = {'score': score, 'name':'test'};
+				topScores.splice(i,0,newPunteggio);
+				topScores.splice(11,1);
+				localStorage.topScores = JSON.stringify(topScores);
+				break;
+
+			}else {
+
+			}
+		}
+	}
+
 
   $(document).on("click", "#snColor", function(evt) {
     toggleSnakeColor();
@@ -308,7 +344,7 @@ $(document).ready(function(){
 	//quando chiudo il panello riprendo il gioco
 	$( "#panel" ).panel({
 	  beforeclose: function( event, ui ) {
-			$(".canvas").addClass("blink");
+			//$(".canvas").addClass("blink");
 			setTimeout(function(){$("#canvas").fadeOut()},500);
 			setTimeout(function(){$("#canvas").fadeIn()},1000);
 			setTimeout(function(){$("#canvas").fadeOut()},1500);
@@ -317,7 +353,7 @@ $(document).ready(function(){
 			setTimeout(function(){
 				$("#canvas").fadeIn();
 				game_loop = setInterval(paint, 100 - $("#speed").val());
-				$(".canvas").removeClass("blink");
+				//$(".canvas").removeClass("blink");
 			},3000);
 		}
 	});

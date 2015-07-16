@@ -1,14 +1,23 @@
-html, body, #pageContent {
+html, body, #pageContent, .ui-page. .ui-mobile-viewport {
   overflow: hidden;
 }
 
+label{
+  color: white !important;
+}
+
+html .ui-overlay-a{
+  background-color: none !important;
+}
+
 #pageContent {
-    padding: 0;
-    position: absolute !important;
-    top : 40px !important;
-    right : 0;
-    bottom : 40px !important;
-    left : 0 !important;
+  padding: 0;
+  position: absolute !important;
+  top: 44.375px !important;
+  /* right: 0; */
+  bottom: 0px !important;
+  /* left: 0 !important; */
+  width: 372px;
 }
 
 .ui-header{
@@ -48,17 +57,23 @@ html, body, #pageContent {
 }
 
 .canvas{
-  position: relative;
-  text-align: center;
-  padding-top: 5px;
-  height: 120px;
+  position: absolute;
+  /*text-align: center;*/
+  /* height: 120px; */
   background-color: #5B7745;
   border-radius: 8px;
   box-shadow: -2px -2px 1px #423333;
+  /*width: 170px;*/
+  padding: 5px;
+  top: 26%;
+  left: 27.5%;
+  height: 19.5%;
+  width: 42.5%;
 }
 
 #canvas{
-  /*width: 100%;*/
+  width: 100%;
+  height: 100%;
 }
 
 #panel{
@@ -66,36 +81,42 @@ html, body, #pageContent {
 }
 
 .controlli{
-  width: 200px;
-  margin: 117px auto auto auto;
+  position: absolute;
+  top: 66%;
+  left: 42%;
+  position: absolute;
+  top: 64.5%;
+  left: 23%;
+  height: 30%;
+  width: 55%;
+}
+
+.controlli table{
+  width: 100%;
+  height: 100%;
+}
+
+.controlli td{
+  padding: 0px;
 }
 
 .controlli button{
-  margin: 5px;
-  padding: 0px;
-  width: 50px;
-  height: 30px;
-  position: relative;
+  margin: 0px;
+  font-size: 0px;
+  border: 0px;
+  /* padding: 0px; */
+  /* width: 100%; */
+  /* position: relative; */
   border-radius: 15px !important;
   background-color: transparent !important;
   border-color: transparent !important;
+  height: 100%;
 }
 
-.controlli button#u{
-  margin: auto;
+.controlli button#u, .controlli button#l, .controlli button#r, .controlli button#d{
+  background-color: red;
 }
-.controlli button#l{
 
-}
-.controlli button#r{
-  position: relative;
-  top: -35px;
-  left: 145px;
-}
-.controlli button#d{
-  margin: auto;
-  top: -20px;
-}
 
 .ui-icon-pause{
     background: url('../res/pause.png') no-repeat rgba(0, 0, 0, 0.4) !important;
